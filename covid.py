@@ -9,26 +9,23 @@ scaler = pickle.load(open('scaler.pkl', 'rb'))
 
 header_pic = Image.open('header.jpg')
 st.image(header_pic, use_column_width=True)
-st.title("Would You have Survived the Titanic?")
+st.title("Is there any requirement of ICU bed or not ")
 
 # Side bar portion of code
-author_pic = Image.open('Prateek.jpg')
-st.sidebar.image(author_pic, "Your humble app creator", use_column_width=True)
+author_pic = Image.open('covid.jpg')
+
 st.sidebar.markdown("Hello !")
 st.sidebar.write("This app is powered by Machine Learning!")
-st.sidebar.write("It uses a Random Forest Classification model "
-                 "trained with Kaggle's now legendary Titanic Survivor dataset. This model was correct 83.6% of the "
-                 "time when it came to predicting whether a person made it onto a lifeboat or was lost"
-                 " at sea.")
-st.sidebar.write("I hope you enjoy this and remember:")
-st.sidebar.write("Women and Children First!")
+st.sidebar.write("It uses a Decision Tree model "
+                 "trained with Kaggle's dataset. This model was correct 94.31% of the "
+                 "time when it came to predicting whether a person in future needs an ICU bed or not.")
+
 
 # Main block asking questions about user
 name_st = st.text_input("What is your name?")
 
 # Title section
-title_list = sorted(['Mr', 'Miss', 'Mrs', 'Master', 'Dr', 'Rev', 'Major', 'Col',
-              'Mlle', 'Ms', 'the Countess', 'Capt', 'Jonkheer', 'Don', 'Dona', 'Sir', 'Mme', 'Lady'])
+title_list = sorted(['Mr', 'Miss', 'Mrs', 'Master'])
 title_st = st.selectbox("Which title would you prefer?", options=title_list)
 
 # Gender columns with portraits
@@ -51,16 +48,9 @@ with col3:
 # Age
 age = st.number_input("What is your age?", value=1, step=1)
 
-# SO
-spouse = st.checkbox("You are in a relationship.")
 
-# Children
-children = st.number_input("How many children do you have?", value=0, step=1)
 
-# Parents
-parents = 0
-if st.checkbox("You often travel with your parents."):
-    parents = st.selectbox('Which ones?', options=['Just Mom', 'Just Dad', 'Usually both'])
+
 
 # Siblings
 siblings = st.number_input("How many siblings do you have?", value=0, step=1)
